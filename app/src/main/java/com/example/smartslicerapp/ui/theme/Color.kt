@@ -9,6 +9,8 @@ val Pink80 = Color(0xFFEFB8C8)
 val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
+val Orange = Color(0xFFFF9B6B)
+
 object SmartCutColors {
     val DarkBackground = Color(0xFF1F1108)
     val CardBackground = Color(0xFF2A1810)
@@ -20,4 +22,5 @@ object SmartCutColors {
     val BrownMedium = Color(0xFF8B5A3C)
     val Terracotta = Color(0xFFE07856)
     val BurntOrange = Color(0xFFCC5500)
+    val Orange = Color(0xFFFF9B6B)
 }
