@@ -24,7 +24,7 @@ private val DarkColorScheme = darkColorScheme(
 
     background = DarkColors.background,
     surface = DarkColors.surface,
-    surfaceVariant = DarkColors.surfaceVariant,
+
 
     onPrimary = DarkColors.onPrimary,
     onSecondary = DarkColors.onSecondary,
@@ -34,9 +34,6 @@ private val DarkColorScheme = darkColorScheme(
 
     error = DarkColors.error,
     onError = Color.White,
-
-    outline = DarkColors.border,
-    outlineVariant = DarkColors.divider
 )
 
 // Светлая цветовая схема
@@ -47,7 +44,7 @@ private val LightColorScheme = lightColorScheme(
 
     background = LightColors.background,
     surface = LightColors.surface,
-    surfaceVariant = LightColors.surfaceVariant,
+
 
     onPrimary = LightColors.onPrimary,
     onSecondary = LightColors.onSecondary,
@@ -58,8 +55,6 @@ private val LightColorScheme = lightColorScheme(
     error = LightColors.error,
     onError = Color.White,
 
-    outline = LightColors.border,
-    outlineVariant = LightColors.divider
 )
 
 @Composable
