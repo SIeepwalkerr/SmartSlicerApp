@@ -25,122 +25,102 @@ fun MainScreen(
     var isConnected by remember { mutableStateOf(false) }
 
     Scaffold(
-        containerColor = Color.Transparent,
-        content = { padding ->
-            Box(
+        containerColor = Color.Transparent
+    ) { padding ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color(0xFF2A1810))
+                .padding(padding)
+        ) {
+            Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(
-                        Brush.verticalGradient(
-                            colors = listOf(
-                                Color(0xFF1A1A1A),
-                                Color(0xFF2D2D2D)
-                            )
-                        )
-                    )
-                    .padding(padding),
-                contentAlignment = Alignment.Center
+                    .padding(horizontal = 16.dp, vertical = 32.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(20.dp)
             ) {
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = Color(0xFF2A1810)
+                Text(
+                    text = "SmartCut App",
+                    fontSize = 32.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = SmartCutColors.Primary
+                )
+
+                Text(
+                    text = "Выбери режим нарезки",
+                    fontSize = 16.sp,
+                    color = SmartCutColors.TextSecondary
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                ConnectionStatusButton(
+                    isConnected = isConnected,
+                    onClick = { isConnected = !isConnected }
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    text = "Режимы нарезки",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = SmartCutColors.Primary
+                )
+
+                ModeButton(
+                    icon = "🧊",
+                    title = "Нарезка кубиками",
+                    description = "Нарежьте продукты кубиками",
+                    onClick = onNavigateToCubeSlicer
+                )
+
+                ModeButton(
+                    icon = "🔪",
+                    title = "Нарезка слайсами",
+                    description = "Нарежьте продукты тонкими ломтиками",
+                    onClick = onNavigateToBladeSlicer
+                )
+
+                ModeButton(
+                    icon = "📋",
+                    title = "Режим рецептов",
+                    description = "Готовить по рецепту с порциями",
+                    onClick = onNavigateToRecipes
+                )
+
+                ModeButton(
+                    icon = "⚖️",
+                    title = "Режим взвешивания",
+                    description = "Точное взвешивание ингредиентов",
+                    onClick = onNavigateToWeighing
+                )
+
+                Spacer(modifier = Modifier.weight(1f))
+
+                OutlinedButton(
+                    onClick = onNavigateToSettings,
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.outlinedButtonColors(
+                        contentColor = SmartCutColors.Primary
                     ),
-                    shape = RoundedCornerShape(24.dp)
+                    border = androidx.compose.foundation.BorderStroke(
+                        2.dp,
+                        SmartCutColors.Primary
+                    ),
+                    shape = RoundedCornerShape(12.dp)
                 ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(32.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(20.dp)
-                    ) {
-
-                        Text(
-                            text = "SmartCut App",
-                            fontSize = 32.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color(0xFFFF8C42)
-                        )
-
-                        Text(
-                            text = "Выбери режим нарезки",
-                            fontSize = 16.sp,
-                            color = Color(0xB3FF8C42)
-                        )
-
-                        Spacer(modifier = Modifier.height(8.dp))
-
-
-                        ConnectionStatusButton(
-                            isConnected = isConnected,
-                            onClick = { isConnected = !isConnected }
-                        )
-
-                        Spacer(modifier = Modifier.height(8.dp))
-
-                        Text(
-                            text = "Режимы нарезки",
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color(0xFFFF8C42)
-                        )
-
-                        ModeButton(
-                            icon = "🧊",
-                            title = "Нарезка кубиками",
-                            description = "Нарежьте продукты кубиками",
-                            onClick = onNavigateToCubeSlicer
-                        )
-
-                        ModeButton(
-                            icon = "🔪",
-                            title = "Нарезка слайсами",
-                            description = "Нарежьте продукты тонкими ломтиками",
-                            onClick = onNavigateToBladeSlicer
-                        )
-
-                        ModeButton(
-                            icon = "📋",
-                            title = "Режим рецептов",
-                            description = "Готовить по рецепту с порциями",
-                            onClick = onNavigateToRecipes
-                        )
-
-                        ModeButton(
-                            icon = "⚖️",
-                            title = "Режим взвешивания",
-                            description = "Точное взвешивание ингредиентов",
-                            onClick = onNavigateToWeighing
-                        )
-
-
-                        OutlinedButton(
-                            onClick = onNavigateToSettings,
-                            modifier = Modifier.fillMaxWidth(),
-                            colors = ButtonDefaults.outlinedButtonColors(
-                                contentColor = Color(0xFFFF8C42)
-                            ),
-                            border = androidx.compose.foundation.BorderStroke(
-                                2.dp,
-                                Color(0xFFFF8C42)
-                            ),
-                            shape = RoundedCornerShape(12.dp)
-                        ) {
-                            Text(
-                                text = "⚙️ Настройки",
-                                fontSize = 16.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                modifier = Modifier.padding(vertical = 4.dp)
-                            )
-                        }
-                    }
+                    Text(
+                        text = "⚙️ Настройки",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        modifier = Modifier.padding(vertical = 4.dp)
+                    )
                 }
             }
         }
-    )
+    }
 }
 
 @Composable
@@ -194,7 +174,7 @@ fun ModeButton(
             .fillMaxWidth()
             .height(80.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0xFFFF9B6B)
+            containerColor = SmartCutColors.Secondary
         ),
         shape = RoundedCornerShape(16.dp)
     ) {
@@ -203,10 +183,9 @@ fun ModeButton(
             horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically
         ) {
-
             Surface(
                 modifier = Modifier.size(48.dp),
-                color = Color(0x33FFFFFF),
+                color = SmartCutColors.Alpha20,
                 shape = RoundedCornerShape(12.dp)
             ) {
                 Box(
@@ -221,7 +200,6 @@ fun ModeButton(
             }
 
             Spacer(modifier = Modifier.width(16.dp))
-
 
             Column(
                 modifier = Modifier.weight(1f),
